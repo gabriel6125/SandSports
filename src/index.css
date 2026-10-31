@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: rgb(255 251 235 / 30%);
+  color: #1e293b;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.home-page {
+  min-height: 100vh;
+  overflow: clip;
+  background: rgb(255 251 235 / 30%);
+  color: #1e293b;
+  user-select: text;
+}
