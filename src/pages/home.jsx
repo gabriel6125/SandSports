@@ -1,4 +1,6 @@
-import { Calendar, Dumbbell, Trophy } from 'lucide-react'
+import beachTennisIcon from '../assets/beach_tenis.png'
+import futevoleiIcon from '../assets/futevõlei.png'
+import voleiIcon from '../assets/volei_de_praia.png'
 import Header from '../components/Header/Header'
 import Hero from '../components/Hero/Hero'
 import Modalities from '../components/Modalities/Modalities'
@@ -12,7 +14,7 @@ const modalities = [
     description:
       'O esporte que mais cresce no Brasil. Dinâmico, fácil de aprender e divertido para jogar com amigos e família.',
     details: 'AULAS & LOCAÇÃO',
-    Icon: Trophy,
+    icon: beachTennisIcon,
     color: 'orange',
   },
   {
@@ -21,7 +23,7 @@ const modalities = [
     description:
       'Clássico das areias! Melhore seu condicionamento físico, impulsão e trabalho em equipe em jogos de dupla ou quarteto.',
     details: 'TREINO FUNCIONAL & JOGOS',
-    Icon: Dumbbell,
+    icon: voleiIcon,
     color: 'amber',
   },
   {
@@ -30,7 +32,7 @@ const modalities = [
     description:
       'Combinação perfeita de habilidade, controle e agilidade. Excelente para ganho de resistência física e precisão.',
     details: 'ESCOLINHA & TORNEIOS',
-    Icon: Calendar,
+    icon: futevoleiIcon,
     color: 'emerald',
   },
 ]

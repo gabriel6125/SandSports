@@ -14,11 +14,11 @@ export default function Modalities({ modalities }) {
         </div>
 
         <div className="modalities-grid">
-          {modalities.map(({ name, description, details, Icon, color }) => (
+          {modalities.map(({ name, description, details, icon, color }) => (
             <article className={`modality-card modality-card--${color}`} key={name}>
               <div>
                 <div className="modality-card__icon">
-                  <Icon aria-hidden="true" />
+                  <img src={icon} alt="" aria-hidden="true" />
                 </div>
                 <h3>{name}</h3>
                 <p>{description}</p>

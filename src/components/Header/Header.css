@@ -34,18 +34,8 @@
 .site-header__brand-icon {
   width: 2.5rem;
   height: 2.5rem;
-  display: grid;
-  place-items: center;
-  border-radius: 0.75rem;
-  background: linear-gradient(45deg, #f97316, #fbbf24);
-  color: white;
-  box-shadow: 0 5px 14px rgb(249 115 22 / 20%);
+  object-fit: contain;
   transition: transform 200ms ease;
-}
-
-.site-header__brand-icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
 }
 
 .site-header__brand:hover .site-header__brand-icon {

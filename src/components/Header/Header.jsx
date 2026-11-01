@@ -1,4 +1,4 @@
-import { Trophy } from 'lucide-react'
+import logo from '../../assets/logo.png'
 import './Header.css'
 
 export default function Header() {
@@ -6,9 +6,7 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <a className="site-header__brand" href="#sobre" aria-label="SandSports - início">
-          <span className="site-header__brand-icon">
-            <Trophy aria-hidden="true" />
-          </span>
+          <img className="site-header__brand-icon" src={logo} alt="" aria-hidden="true" />
           <span className="site-header__brand-name">
             SAND<span>SPORTS</span>
           </span>

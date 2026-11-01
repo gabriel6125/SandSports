@@ -1,4 +1,5 @@
-import { Camera, Play, Trophy, UsersRound } from 'lucide-react'
+import { Camera, Play, UsersRound } from 'lucide-react'
+import logo from '../../assets/logo.png'
 import './Footer.css'
 
 export default function Footer() {
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="site-footer__inner">
         <div className="site-footer__brand">
           <div>
-            <Trophy aria-hidden="true" />
+            <img src={logo} alt="" aria-hidden="true" />
             <span>SANDSPORTS</span>
           </div>
           <p>Projeto Disciplina WDE 2 • Arena de Esportes de Areia</p>
