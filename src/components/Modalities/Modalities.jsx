@@ -23,6 +23,7 @@ export default function Modalities({ modalities }) {
                 <h3>{name}</h3>
                 <p>{description}</p>
               </div>
+
               <div className="modality-card__details">
                 <span>{details}</span>
                 <ChevronRight aria-hidden="true" />

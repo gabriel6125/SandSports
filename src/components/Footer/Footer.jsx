@@ -1,4 +1,5 @@
-import { Camera, Play, UsersRound } from 'lucide-react'
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 import logo from '../../assets/logo.png'
 import './Footer.css'
 
@@ -15,9 +16,15 @@ export default function Footer() {
         </div>
 
         <div className="site-footer__social">
-          <a href="#" aria-label="Instagram"><Camera aria-hidden="true" /></a>
-          <a href="#" aria-label="Facebook"><UsersRound aria-hidden="true" /></a>
-          <a href="#" aria-label="YouTube"><Play aria-hidden="true" /></a>
+          <span aria-hidden="true">
+            <FaInstagram aria-hidden="true" />
+          </span>
+          <span aria-hidden="true">
+            <FaWhatsapp aria-hidden="true" />
+          </span>
+          <span aria-hidden="true">
+            <FaLocationDot aria-hidden="true" />
+          </span>
         </div>
 
         <p className="site-footer__copyright">

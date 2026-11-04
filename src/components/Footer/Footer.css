@@ -43,15 +43,16 @@
   gap: 0.5rem;
 }
 
-.site-footer__social a {
+.site-footer__social span {
   display: grid;
   place-items: center;
   padding: 0.5rem;
   color: #94a3b8;
+  cursor: pointer;
   transition: color 200ms ease;
 }
 
-.site-footer__social a:hover {
+.site-footer__social span:hover {
   color: #f97316;
 }
 
