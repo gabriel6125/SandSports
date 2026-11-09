@@ -2,6 +2,34 @@ import { useState } from 'react'
 import { AlertCircle, CheckCircle } from 'lucide-react'
 import './Registration.css'
 
+function formatPhoneNumber(value) {
+  const digits = value.replace(/\D/g, '').slice(0, 11)
+  const areaCode = digits.slice(0, 2)
+  const phoneNumber = digits.slice(2)
+
+  if (!digits) {
+    return ''
+  }
+
+  if (digits.length <= 2) {
+    return digits.length === 2 ? `(${digits})` : `(${digits}`
+  }
+
+  const separatorPosition = digits.length > 10 ? 5 : 4
+  const formattedPhoneNumber = phoneNumber.replace(
+    new RegExp(`^(\\d{${separatorPosition}})(\\d+)`),
+    '$1-$2',
+  )
+
+  return `(${areaCode}) ${formattedPhoneNumber}`
+}
+
+function formatFullName(value) {
+  return value
+    .replace(/[^\p{L}\s'-]/gu, '')
+    .replace(/\s{2,}/g, ' ')
+}
+
 export default function Registration({ modalities }) {
   const [formData, setFormData] = useState({
     nome: '',
@@ -13,13 +41,35 @@ export default function Registration({ modalities }) {
 
   function handleChange(event) {
     const { name, value } = event.target
-    setFormData((previous) => ({ ...previous, [name]: value }))
+    const formattedValue = name === 'telefone'
+      ? formatPhoneNumber(value)
+      : name === 'nome'
+        ? formatFullName(value)
+        : name === 'email'
+          ? value.replace(/\s/g, '').toLowerCase()
+          : value
+
+    setFormData((previous) => ({ ...previous, [name]: formattedValue }))
   }
 
   function handleSubmit(event) {
     event.preventDefault()
-    if (!formData.nome || !formData.email || !formData.telefone || !formData.modalidade) {
+    const emailInput = event.currentTarget.elements.namedItem('email')
+    const nameParts = formData.nome.trim().split(/\s+/).filter(Boolean)
+    const phoneDigits = formData.telefone.replace(/\D/g, '')
+
+    if (
+      nameParts.length < 2
+      || !formData.email
+      || !formData.modalidade
+      || ![10, 11].includes(phoneDigits.length)
+    ) {
       setStatus({ type: 'error', message: 'Por favor, preencha todos os campos obrigatórios.' })
+      return
+    }
+
+    if (!emailInput.validity.valid || !formData.email.endsWith('@gmail.com')) {
+      setStatus({ type: 'error', message: 'Por favor, informe um e-mail válido do Gmail (@gmail.com).' })
       return
     }
 
@@ -61,7 +111,7 @@ export default function Registration({ modalities }) {
           </div>
         )}
 
-        <form className="registration-form" onSubmit={handleSubmit}>
+        <form className="registration-form" onSubmit={handleSubmit} noValidate>
           <div className="registration-field">
             <label htmlFor="nome">Nome Completo *</label>
             <input
@@ -71,6 +121,8 @@ export default function Registration({ modalities }) {
               value={formData.nome}
               onChange={handleChange}
               placeholder="ex: João da Silva"
+              autoComplete="name"
+              required
             />
           </div>
 
@@ -83,7 +135,9 @@ export default function Registration({ modalities }) {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="seu@email.com"
+                placeholder="seu@gmail.com"
+                autoComplete="email"
+                required
               />
             </div>
 
@@ -96,6 +150,10 @@ export default function Registration({ modalities }) {
                 value={formData.telefone}
                 onChange={handleChange}
                 placeholder="(11) 99999-9999"
+                autoComplete="tel"
+                inputMode="tel"
+                maxLength={15}
+                required
               />
             </div>
           </div>
@@ -107,6 +165,7 @@ export default function Registration({ modalities }) {
               name="modalidade"
               value={formData.modalidade}
               onChange={handleChange}
+              required
             >
               <option value="">Selecione uma modalidade...</option>
               {modalities.map(({ value, name }) => (

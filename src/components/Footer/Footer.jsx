@@ -12,7 +12,7 @@ export default function Footer() {
             <img src={logo} alt="" aria-hidden="true" />
             <span>SANDSPORTS</span>
           </div>
-          <p>Projeto Disciplina WDE 2 • Arena de Esportes de Areia</p>
+          <p>Projeto Disciplina WEB 2 • Arena de Esportes de Areia</p>
         </div>
 
         <div className="site-footer__social">
